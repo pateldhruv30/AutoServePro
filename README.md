@@ -33,10 +33,10 @@ Since this is a .NET project, you'll need the following prerequisites installed 
 ### Project Setup
 1.  **Clone the Repository:**
     ```bash
-    git clone [Your Repository URL Here]
+    git clone https://github.com/pateldhruv30/AutoServePro
     cd AutoServePro
     ```
-    *(Replace `[Your Repository URL Here]` with the actual link to your project's repository)*
+
 2.  **Restore Dependencies:** Open a terminal in the project's root directory and run:
     ```bash
     dotnet restore
