@@ -1,0 +1,35 @@
+@model IEnumerable<AutoServePro.Models.Appointment>
+
+@{
+    ViewData["Title"] = "Service History";
+}
+
+<h1>Service History</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Service</th>
+            <th>Vehicle Name</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Payment</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var appointment in Model)
+        {
+            <tr>
+                <td>@appointment.Service.Name</td>
+                <td>@appointment.VehicleName</td>
+                <td>@appointment.AppointmentDate.ToString("g")</td>
+                <td>@appointment.Status</td>
+                <td>@(appointment.Payment != null ? $"{appointment.Payment.Method} - {appointment.Payment.Status}" : "N/A")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <a asp-action="Dashboard">Back to Dashboard</a>
+</div>

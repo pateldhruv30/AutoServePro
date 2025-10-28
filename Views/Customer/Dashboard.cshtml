@@ -1,0 +1,49 @@
+@model AutoServePro.ViewModels.CustomerDashboardViewModel
+
+@{
+    ViewData["Title"] = "Customer Dashboard";
+}
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<h1>Customer Dashboard</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <h2>Your Appointments</h2>
+        <a class="btn btn-primary mb-3" asp-action="BookAppointment">Book Appointment</a>
+        <div style="max-height: 400px; overflow-y: auto;">
+            <ul class="list-group">
+                @foreach (var appointment in Model.Appointments)
+                {
+                    <li class="list-group-item">
+                        <strong>@appointment.Service.Name</strong><br />
+                        Vehicle: @appointment.VehicleName<br />
+                        Date: @appointment.AppointmentDate.ToString("g")<br />
+                        Status: @appointment.Status
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <h2>Available Services</h2>
+        <div style="max-height: 400px; overflow-y: auto;">
+            <ul class="list-group">
+                @foreach (var service in Model.Services)
+                {
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        @service.Name
+                        <span class="badge bg-primary rounded-pill">₹@service.Price.ToString("F2")</span>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
